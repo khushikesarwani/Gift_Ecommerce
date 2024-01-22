@@ -10,6 +10,7 @@ import  authroutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import path from 'path';
+import {fileURLToPath} from 'url;
 
 //configure env
 dotenv.config()
@@ -18,7 +19,9 @@ dotenv.config()
 connectDB();
 
 const app=express();
-
+//es module fix
+const __filename=fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
 //middleware---------------------------
 app.use(cors());
 app.use(express.json());   //using this instead of body parser
