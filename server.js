@@ -23,7 +23,7 @@ const app=express();
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 //middleware---------------------------
-app.use(cors());
+app.use(cors({origin: true, credentials: true})); 
 app.use(express.json());   //using this instead of body parser
 app.use(morgan('dev'));    //tells us which api is fetched
 app.use(express.static(path.join(__dirname, './client/build')));
