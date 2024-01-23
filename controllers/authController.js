@@ -181,6 +181,7 @@ try {
   //password
   if(password && password.length<6){
     res.json({error:"Atleast 6 character long password is required "});
+      return;
   }
 
   const hashedPasswordk= password ? await hashPassword(password) : undefined; 
