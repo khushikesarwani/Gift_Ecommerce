@@ -16,7 +16,7 @@ import {fileURLToPath} from 'url';
 dotenv.config()
 
 //database config
-// connectDB();
+connectDB();
 
 const app=express();
 //es module fix
@@ -42,8 +42,8 @@ res.sendFile(path.join(__dirname,'./client/build/index.html'));
 const PORT=process.env.PORT ||8080;
 
 
-connectDB().then(() => {
+
     app.listen(PORT, () => {
         console.log("server is listening for requests");
-    })
-});
+    });
+
