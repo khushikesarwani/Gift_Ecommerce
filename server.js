@@ -19,11 +19,14 @@ dotenv.config()
 connectDB();
 
 const app=express();
-//es module fix
+
+//fiximg es problem
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
+
 //middleware---------------------------
-app.use(cors({origin: true, credentials: true})); 
+// app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 app.use(express.json());   //using this instead of body parser
 app.use(morgan('dev'));    //tells us which api is fetched
 app.use(express.static(path.join(__dirname, './client/build')));
@@ -42,8 +45,6 @@ res.sendFile(path.join(__dirname,'./client/build/index.html'));
 const PORT=process.env.PORT ||8080;
 
 
-
-    app.listen(PORT, () => {
-        console.log("server is listening for requests");
-    });
-
+app.listen(PORT,()=>{
+    console.log("Server is running at "+PORT);
+})
