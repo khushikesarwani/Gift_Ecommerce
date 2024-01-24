@@ -45,6 +45,8 @@ res.sendFile(path.join(__dirname,'./client/build/index.html'));
 const PORT=process.env.PORT ||8080;
 
 
-app.listen(PORT,()=>{
-    console.log("Server is running at "+PORT);
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests "+PORT);
+    })
 })
